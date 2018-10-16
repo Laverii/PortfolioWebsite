@@ -35,16 +35,16 @@ var DomUtils = {
 	addClassName: function(element, className){
 		//Check if the element already ocntains the class
 		//If no, add it
-		if(DomUtils.containsClassName(element,className)){
+		if(!DomUtils.containsClassName(element,className)){
 			//` ${className}` === ' ' + className 
-			element.className = element.className ? (element.className + ` ${className}` + className) : className; 
+			element.className = element.className ? (element.className + ` ${className}`) : className; 
 		}
 	},
 
 	removeClassName: function(element, className){
 		//Checks if the element has the class name
 		//If yes, remove it
-		if(!DomUtils.containsClassName(element,className)){
+		if(DomUtils.containsClassName(element,className)){
 			//Split the element className by using spaces as the delimiter
 			//filter the resulting array of strings and make sure that we filter
 			//out any string equivalent to the className param
