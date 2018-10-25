@@ -1,6 +1,22 @@
 window.onload = function (e) {
 	var navBar = new NavBar();
-	navBar.addNavItem('About me', 150);
+	var sectionContainer = new Sectioncontainer();
+
+	var clearSectionContainer = function () {
+		while(sectionContainer.getContainer().children.length > 0){
+			sectionContainer.getContainer().removeChild(sectionContainer.getContainer().lastChild);
+		}
+	};
+
+	var displayAboutMe = function () {
+		clearSectionContainer();
+
+		new AboutMe(sectionContainer);
+	};
+	
+	displayAboutMe();
+
+	navBar.addNavItem('About me', 150, displayAboutMe);
 
 	var projectListNavItem = navBar.addNavItem('Project List', 150);
 	projectListNavItem.addMenuItem('Journey through Memories', 200);
@@ -14,4 +30,6 @@ window.onload = function (e) {
 
 
 	navBar.addNavItem('Artwork', 150);
+
+	
 };

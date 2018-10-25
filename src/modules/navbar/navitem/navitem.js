@@ -1,7 +1,8 @@
 var NavItem = function (navBar, label, options) {
 
     this.options = {
-        width: options ? options.width : 150
+        width: options ? options.width : 150,
+        onClick: options ? options.onClick : undefined
     };
 
     this.navBar = navBar;
@@ -42,15 +43,19 @@ var NavItem = function (navBar, label, options) {
     };
 
     this .onClick = function (e){
-        if(this.menuItemsContainer.style.display === 'none'){
+        if(this.menuItemsContainer.style.height === '0px'){
             this.showMenuItemsContainer();
         }
         else{
             this.hideMenuItemsContainer();
         }
 
+        if(this.options.onClick){
+            this.options.onClick(e);
+        }
+
         e.cancelBubble = true;
-    }
+    };
 
     this.initMenuItemsContainer = function (){
         //create an array to hold our menu items
@@ -64,11 +69,19 @@ var NavItem = function (navBar, label, options) {
     };
 
     this.showMenuItemsContainer = function (){
-        this.menuItemsContainer.style.display =  'initial';
+        if(this.menuItems.length === 0){
+            return;
+        }
+        var totalHeight = this.menuItems
+        .map(function (menuItem) {return menuItem.getHeight(); })
+        .reduce(function (fullHeight, height) {return fullHeight + height; });
+        this.menuItemsContainer.style.height =  `${totalHeight}px`;
+        this.menuItemsContainer.style.border = '';
     };
 
     this.hideMenuItemsContainer = function () {
-        this.menuItemsContainer.style.display = 'none';
+        this.menuItemsContainer.style.height = '0px';
+        this.menuItemsContainer.style.border = '0px';
     };
 
     this.getWidth = function(){

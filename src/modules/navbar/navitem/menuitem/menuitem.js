@@ -14,7 +14,12 @@ var MenuItem = function(navItem, label, options) {
     };
 
     this.getWidth = function (){
-        return this.options.width;
+        //clientWidth is a property that elements have to get the width of certain elements/divs
+        return this.options.clientWidth;
+    };
+
+    this.getHeight = function(){
+        return this.menuItemElement.clientHeight;
     };
 
     this.intialize();

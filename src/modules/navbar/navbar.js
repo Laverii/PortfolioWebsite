@@ -27,10 +27,10 @@ NavBar = function(){
 		return this.navItemsContainer;
 	}
 
-	this.addNavItem = function(label, width){
+	this.addNavItem = function(label, width, onClick){
 		//Create a nav item and add it to the list of nav items
 		//note: { width: width } is equivalent to { width }
-		var navItem = new NavItem(this, label, { width });
+		var navItem = new NavItem(this, label, { width, onClick });
 		this.navItems.push(navItem);
 
 		this.navItemsContainerWidth += navItem.getWidth();
