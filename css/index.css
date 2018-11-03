@@ -90,12 +90,24 @@ cursor: pointer;
 
 .about-me-container{
     width: 100%;
-    height: 100%;
+    height: 560px;
 }
 
 .about-me-image-container{
-    width: 50%;
+    position: absolute;
+    width: 400px;
+    height: 500px;
     display: inline-block;
+    overflow: hidden;
+    border: 2px solid #555;
+    left: 10%;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+.about-me-image-container img{
+    width: 400px;
+    height: 500px;
 }
 
 .about-me-description-container{
@@ -103,6 +115,8 @@ cursor: pointer;
     width: 50%;
     display: inline-block;
     padding: 0px 20px;
+    position: absolute;
+    left: 48%;
 }
 
 .about-me-full-name{
@@ -114,4 +128,21 @@ cursor: pointer;
 .about-me-description{
     color: #aaa;
     text-align: center;
+}
+
+.download-resume-button{
+    border: 2px solid #555;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-image:linear-gradient(#333, #222);
+    cursor: pointer;
+}
+
+.download-resume-button.mouse-over{
+    background-image: linear-gradient(#555, #444);
+}
+
+.download-resume-button.mouse-down{
+    background-image: linear-gradient(#222, #000);
 }
